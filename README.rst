@@ -103,7 +103,7 @@ Dockerfile.
 
     # Create the SageMaker XGBoost Container Python package.
     cd sagemaker-xgboost-container
-    python setup.py bdist_wheel --universal
+    python setup.py bdist_wheel
 
 If you want to build "final" Docker images, then use:
 
@@ -252,4 +252,4 @@ SageMaker XGboost Framework Container is licensed under the Apache 2.0 License. 
 .com, Inc. or its affiliates. All Rights Reserved. The license is available at:
 http://aws.amazon.com/apache2.0/
 
-.. |XGBoostLatestVersion| replace:: 1.0-1
+.. |XGBoostLatestVersion| replace:: 1.1-1
