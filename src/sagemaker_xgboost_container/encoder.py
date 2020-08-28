@@ -83,14 +83,15 @@ def recordio_protobuf_to_dmatrix(string_like):  # type: (bytes) -> xgb.DMatrix
     """
     buf = bytes(string_like)
     dataset = [mlio.InMemoryStore(buf)]
-    reader = mlio.RecordIOProtobufReader(dataset=dataset, batch_size=100)
+    reader_params = mlio.DataReaderParams(dataset=dataset, batch_size=100)
+    reader = mlio.RecordIOProtobufReader(reader_params)
 
-    if type(reader.peek_example()['values']) is mlio.core.DenseTensor:
+    if type(reader.peek_example()['values']) is mlio.DenseTensor:
         to_matrix = as_numpy
         vstack = np.vstack
     else:
         to_matrix = to_coo_matrix
-        vstack = scipy_vstack
+        vstack = lambda x: scipy_vstack(x).tocsr()
 
     examples = []
     for example in reader:
