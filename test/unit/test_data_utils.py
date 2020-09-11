@@ -32,7 +32,7 @@ class TestTrainUtils(unittest.TestCase):
         self.utils_path = os.path.join(str(current_path.parent.parent), 'utils')
 
     def test_get_content_type(self):
-        self.assertEqual('libsvm', data_utils.get_content_type('libsvm'))
+        self.assertEqual('alibsvm', data_utils.get_content_type('libsvm'))
         self.assertEqual('libsvm', data_utils.get_content_type('text/libsvm'))
         self.assertEqual('libsvm', data_utils.get_content_type('text/x-libsvm'))
 
